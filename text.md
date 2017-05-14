@@ -6,6 +6,12 @@ Ya ha llovido bastante desde que, en 2XXX, Etsy nos sacudiera con su post "Monit
 
 ## Recap: Que es statsd? 
 
-StatsD fue un servidor de almacenamiento de estadisticas, desarrollado en Node por Etsy pensado para recibir telemetría interna de aplicación. A grandes trazos es un programa que queda en memoria y memoriza los datos que le vayan llegando por TCP o UDP. Ni siquiera está encargado de almacenarlos!. Como servidor puede almacenar Gauges, Counters, Sets y Timers. Los timers son interesantes, porque iran almacenando los tiempos que les digamos, calculando medias maximas minimas y el percentil que queramos calcular.
+StatsD fue un servidor de almacenamiento de estadísticas, desarrollado en Node por Etsy pensado para recibir telemetría interna de aplicación. A grandes trazos es un programa que queda en memoria y memoriza los datos que le vayan llegando por TCP o UDP. Ni siquiera está encargado de persistirlos o mostrarlos!. Como servidor puede almacenar Gauges, Counters, Sets y Timers. Los timers son interesantes, porque irán almacenando los tiempos que les digamos, calculando medias, máximas, mínimas y el percentil que queramos calcular.
+
+## Configurar Telegraf para comportarse como StatsD
+
+StatsD además es un protocolo tan simple que ya no se usa el servidor desarrollado por Etsy, quen mas quien menos ha desarrollado el protocolo como complemento a otro sistema. Es el caso de Telegraf. Telegraf puede configurarse como servidor de statsd y los resultados de los diferentes intevalos se ira almacenando en influxdb
+
+
 
 
