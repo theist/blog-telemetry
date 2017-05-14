@@ -1,0 +1,27 @@
+version: '2'
+services:
+  influx:
+    image: influxdb
+    environment:
+    - INFLUXDB_ADMIN_BIND_ADDRESS=0.0.0.0:8083
+    - INFLUXDB_ADMIN_ENABLED=TRUE
+    ports:
+    - "8086:8086"
+    - "8083:8083"
+
+  grafana:
+    image: grafana/grafana
+    links:
+    - influx
+    ports:
+    - "3000:3000"
+
+  telegraf:
+    image: telegraf
+    volumes:
+    - ./telegraf:/config
+
+    command: telegraf -config /config/telegraf.conf
+    links:
+    - influx
+
