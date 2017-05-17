@@ -9,6 +9,7 @@ configure do
   host = ENV['STATSD_HOST'] || 'localhost'
   port = ENV['STATSD_PORT'] || 8125
   set :statsd, Statsd.new(host, port)
+  set :bind, '0.0.0.0'
 end
 
 get "/" do
