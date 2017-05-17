@@ -18,9 +18,9 @@ get "/" do
     statsd.time('execution.time') do
       action = rand
       min, max = [50,300] 
-      min, max = [1000,2000] if action > 0.45
-      min, max = [6000,7000] if action > 0.75
-      raise CantConnectError if action > 0.90
+      min, max = [1000,2000] if action > 0.95
+      min, max = [6000,7000] if action > 0.99
+      raise CantConnectError if action > 0.998
       waiting = rand(min..max)
 
       foobar = rand(10)
