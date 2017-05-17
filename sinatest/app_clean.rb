@@ -1,12 +1,9 @@
 require "sinatra"
 require "timeout"
 
-
 class CantConnectError < StandardError; end
 
 configure do
-  host = ENV['STATSD_HOST'] || 'localhost'
-  port = ENV['STATSD_PORT'] || 8125
   set :bind, '0.0.0.0'
 end
 
@@ -36,6 +33,4 @@ get "/" do
   end
   status 200
 end
-
-
 
